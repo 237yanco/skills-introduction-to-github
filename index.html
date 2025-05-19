@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SandaCorp - Développeur Web & Mobile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Pour le défilement doux */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Animations personnalisées */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Application des animations avec des délais pour un effet décalé */
+        .animate-fade-in { animation: fadeIn 1s ease-out forwards; }
+        .animate-fade-in-up { animation: fadeInUp 1s ease-out forwards; }
+        .animate-fade-in-left { animation: fadeInLeft 1s ease-out forwards; }
+        .animate-fade-in-right { animation: fadeInRight 1s ease-out forwards; }
+
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .delay-500 { animation-delay: 0.5s; }
+
+        /* Pour l'effet de survol sur les cartes de service */
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .service-card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        /* Effet machine à écrire */
+        .typing-cursor::after {
+            content: '|';
+            animation: blink 1s step-start infinite;
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100 font-sans antialiased">
+
+    <!-- Barre de Navigation -->
+    <nav class="bg-gray-800 shadow-lg fixed w-full z-50 top-0">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-teal-400 hover:text-teal-300 transition-colors duration-300 animate-fade-in-left">SandaCorp</a>
+            <div class="hidden md:flex space-x-4">
+                <a href="#hero" class="text-gray-300 hover:text-teal-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300 animate-fade-in-right delay-100">Accueil</a>
+                <a href="#services" class="text-gray-300 hover:text-teal-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300 animate-fade-in-right delay-200">Services</a>
+                <a href="#about" class="text-gray-300 hover:text-teal-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300 animate-fade-in-right delay-300">À Propos</a>
+                <a href="#contact" class="text-gray-300 hover:text-teal-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300 animate-fade-in-right delay-400">Contact</a>
+            </div>
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-gray-300 hover:text-teal-400 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="md:hidden hidden bg-gray-800">
+            <a href="#hero" class="block text-gray-300 hover:bg-gray-700 hover:text-teal-400 px-3 py-2 rounded-md text-base font-medium">Accueil</a>
+            <a href="#services" class="block text-gray-300 hover:bg-gray-700 hover:text-teal-400 px-3 py-2 rounded-md text-base font-medium">Services</a>
+            <a href="#about" class="block text-gray-300 hover:bg-gray-700 hover:text-teal-400 px-3 py-2 rounded-md text-base font-medium">À Propos</a>
+            <a href="#contact" class="block text-gray-300 hover:bg-gray-700 hover:text-teal-400 px-3 py-2 rounded-md text-base font-medium">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Section Héros -->
+    <section id="hero" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-teal-900 pt-20">
+        <div class="container mx-auto px-6 py-12 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 text-center md:text-left mb-10 md:mb-0 animate-fade-in-left">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4">
+                    Salut, je suis <span class="text-teal-400">MATALA SANDA SIMON YANN</span>
+                </h1>
+                <h2 class="text-2xl md:text-3xl text-gray-300 mb-6 typing-cursor">Étudiant Développeur Web & Mobile</h2>
+                <p class="text-lg text-gray-400 mb-8 leading-relaxed">
+                    Passionné par la création d'expériences numériques innovantes. Je transforme vos idées en sites web et applications performants et esthétiques.
+                </p>
+                <a href="#contact" class="bg-teal-500 hover:bg-teal-600 text-white font-bold py-3 px-8 rounded-full text-lg shadow-lg transform hover:scale-105 transition-all duration-300 inline-block">
+                    Discutons de votre projet <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+            <div class="md:w-1/2 flex justify-center md:justify-end animate-fade-in-right delay-200">
+                <div class="bg-teal-500 p-2 rounded-full shadow-2xl transform hover:rotate-3 transition-transform duration-500">
+                    <!-- VÉRIFIEZ BIEN QUE VOTRE IMAGE S'APPELLE "photo.jpg" ET EST DANS LE MÊME DOSSIER QUE CE FICHIER HTML -->
+                    <img src="IMG_20230912_134358_401.jpg" alt="MATALA SANDA SIMON YANN" class="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full object-cover border-4 border-gray-700">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Services -->
+    <section id="services" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-teal-400 mb-4 animate-fade-in-up">Mes Services</h2>
+            <p class="text-center text-gray-400 mb-12 max-w-2xl mx-auto animate-fade-in-up delay-100">
+                Je propose des solutions sur mesure pour donner vie à vos projets numériques.
+            </p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="service-card bg-gray-700 p-8 rounded-xl shadow-lg text-center animate-fade-in-up delay-200">
+                    <div class="text-teal-400 text-5xl mb-6"><i class="fas fa-laptop-code"></i></div>
+                    <h3 class="text-2xl font-semibold text-white mb-3">Création de Sites Web</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Sites vitrines, e-commerce, blogs. Modernes, responsives et optimisés pour le SEO.
+                    </p>
+                </div>
+                <div class="service-card bg-gray-700 p-8 rounded-xl shadow-lg text-center animate-fade-in-up delay-300">
+                    <div class="text-teal-400 text-5xl mb-6"><i class="fas fa-mobile-alt"></i></div>
+                    <h3 class="text-2xl font-semibold text-white mb-3">Développement d'Applications Web</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Applications web interactives et performantes (PWA, dashboards, outils métier).
+                    </p>
+                </div>
+                <div class="service-card bg-gray-700 p-8 rounded-xl shadow-lg text-center animate-fade-in-up delay-400">
+                    <div class="text-teal-400 text-5xl mb-6"><i class="fas fa-palette"></i></div>
+                    <h3 class="text-2xl font-semibold text-white mb-3">Design UI/UX (Notions)</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Conception d'interfaces utilisateur intuitives et attrayantes pour une expérience optimale.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section À Propos -->
+    <section id="about" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0 md:pr-12 animate-fade-in-left">
+                 <h2 class="text-3xl md:text-4xl font-bold text-teal-400 mb-6">À Propos de Moi</h2>
+                <p class="text-lg text-gray-300 mb-4 leading-relaxed">
+                    Je suis <span class="font-semibold text-teal-300">MATALA SANDA SIMON YANN</span>, un étudiant en informatique passionné par le développement web et mobile. Mon objectif est de transformer des concepts créatifs en solutions numériques fonctionnelles et élégantes.
+                </p>
+                <p class="text-lg text-gray-400 mb-4 leading-relaxed">
+                    Constamment en apprentissage des dernières technologies, je m'efforce de livrer des projets de qualité qui répondent aux besoins spécifiques de chaque client. J'aime relever des défis et voir l'impact positif de mon travail.
+                </p>
+                <p class="text-lg text-gray-400 leading-relaxed">
+                    Que vous soyez une startup, une petite entreprise ou un particulier, je suis prêt à collaborer avec vous pour concrétiser votre vision.
+                </p>
+            </div>
+            <div class="md:w-1/2 flex justify-center animate-fade-in-right delay-200">
+                <div class="bg-gray-800 p-8 rounded-lg shadow-xl">
+                    <h3 class="text-xl font-semibold text-teal-400 mb-4">Compétences Clés :</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><i class="fas fa-check-circle text-teal-500 mr-2"></i> HTML, CSS, JavaScript</li>
+                        <li><i class="fas fa-check-circle text-teal-500 mr-2"></i> Frameworks (Ex: React, Vue, Angular - à adapter)</li>
+                        <li><i class="fas fa-check-circle text-teal-500 mr-2"></i> Tailwind CSS, Bootstrap</li>
+                        <li><i class="fas fa-check-circle text-teal-500 mr-2"></i> Backend (Ex: Node.js, Python/Django - à adapter)</li>
+                        <li><i class="fas fa-check-circle text-teal-500 mr-2"></i> Responsive Design</li>
+                        <li><i class="fas fa-check-circle text-teal-500 mr-2"></i> Git & GitHub</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Contact -->
+    <section id="contact" class="py-20 bg-gradient-to-br from-teal-900 via-gray-800 to-gray-900">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-teal-400 mb-6 animate-fade-in-up">Prêt à démarrer votre projet ?</h2>
+            <p class="text-lg text-gray-300 mb-10 max-w-xl mx-auto animate-fade-in-up delay-100">
+                Contactez-moi pour discuter de vos idées. Je serais ravi de vous aider à les concrétiser.
+            </p>
+            <a href="mailto:sandasimonyann@gmail.com" class="bg-white hover:bg-gray-200 text-teal-600 font-bold py-4 px-10 rounded-full text-xl shadow-lg transform hover:scale-105 transition-all duration-300 inline-block animate-fade-in-up delay-200">
+                <i class="fas fa-envelope mr-3"></i>Envoyez-moi un Email
+            </a>
+             <p class="text-lg text-gray-300 mt-4">sandasimonyann@gmail.com</p>
+            <div class="mt-12 animate-fade-in-up delay-300">
+                <p class="text-gray-400">Ou retrouvez-moi sur :</p>
+                <div class="flex justify-center space-x-6 mt-4">
+                    <a href="#" class="text-gray-400 hover:text-teal-400 transition-colors duration-300 text-2xl"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-teal-400 transition-colors duration-300 text-2xl"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pied de page -->
+    <footer class="bg-gray-800 text-center py-8">
+        <p class="text-gray-500">© <span id="currentYear"></span> MATALA SANDA SIMON YANN. Tous droits réservés.</p>
+        <p class="text-gray-600 text-sm">Créé avec <i class="fas fa-heart text-red-500"></i> et Tailwind CSS.</p>
+    </footer>
+
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
